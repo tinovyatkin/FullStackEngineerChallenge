@@ -1,0 +1,7 @@
+*/node_modules
+Makefile
+.git
+.env
+# nuxt.js build output
+.nuxt
+frontend/dist
