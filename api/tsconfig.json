@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "target": "es2020",
+    "module": "esnext",
+    "lib": ["es2019.object", "es2020", "DOM"],
+    "resolveJsonModule": false,
+    "maxNodeModuleJsDepth": 3,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    /* Additional Checks */
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "esModuleInterop": false,
+    "keyofStringsOnly": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "pretty": true,
+    "typeRoots": ["./@types", "./node_modules/@types"]
+  }
+}
