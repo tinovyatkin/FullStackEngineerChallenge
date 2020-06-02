@@ -27,7 +27,9 @@
     "import/no-commonjs": "error",
     "import/extensions": ["error", "always"],
     "jsdoc/valid-types": "off",
-    "jsdoc/require-param-description": "off"
+    "jsdoc/require-param-description": "off",
+    "jsdoc/no-undefined-types": "off",
+    "jsdoc/require-returns": "off"
   },
   "overrides": [
     {
