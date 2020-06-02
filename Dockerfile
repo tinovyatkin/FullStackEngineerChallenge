@@ -18,7 +18,7 @@ RUN npm install -g nodemon @nuxt/core @nuxt/cli @nuxt/typescript-build @nuxt/typ
 ENV HUSKY_SKIP_INSTALL true
 ENV NODE_ENV development
 ENV JWT_SECRET jwt_super_secret_1
-ENV MONGOHQ_URL=mongodb://localhost/paypay-challenge-test
+ENV MONGOHQ_URL=mongodb://localhost/paypay-challenge
 
 WORKDIR /app
 RUN mkdir -p /data/db ./readme
