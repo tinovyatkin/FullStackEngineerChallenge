@@ -15,6 +15,11 @@ RUN mkdir /var/run/sshd
 
 RUN npm install -g nodemon @nuxt/core @nuxt/cli @nuxt/typescript-build @nuxt/typescript-runtime
 
+ENV HUSKY_SKIP_INSTALL true
+ENV NODE_ENV development
+ENV JWT_SECRET jwt_super_secret_1
+ENV MONGOHQ_URL=mongodb://localhost/paypay-challenge-test
+
 WORKDIR /app
 RUN mkdir -p /data/db ./readme
 COPY init-db.sh init-db.js ./
@@ -23,10 +28,6 @@ RUN ./init-db.sh
 COPY . ./
 
 RUN markdown README.md > ./readme/index.html
-
-ENV HUSKY_SKIP_INSTALL true
-ENV NODE_ENV development
-ENV JWT_SECRET jwt_super_secret_1
 
 WORKDIR /app/frontend
 COPY frontend/package.json frontend/package-lock.json ./
