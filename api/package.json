@@ -7,7 +7,7 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "test": "mocha",
+    "test": "c8 mocha",
     "lint": "eslint src/ test/",
     "start": "nodemon",
     "mocha": "mocha test/ --recursive --exit"

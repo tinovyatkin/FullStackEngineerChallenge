@@ -1,0 +1,46 @@
+{
+  "title": "Review schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "_id": {
+      "bsonType": "objectId"
+    },
+    "created_at": {
+      "bsonType": "date"
+    },
+    "updated_at": {
+      "bsonType": "date"
+    },
+    "employee": {
+      "description": "e-mail address of employee of this review",
+      "type": "string"
+    },
+    "assignee": {
+      "type": "array",
+      "additionalItems": false,
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "feedback": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "author": {
+            "type": "string"
+          },
+          "created_at": {
+            "bsonType": "date"
+          },
+          "text": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "required": ["created_at", "employee"]
+}

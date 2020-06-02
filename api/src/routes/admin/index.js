@@ -1,5 +1,6 @@
 import Router from "koa-router";
 import { adminEmployeeRoutes } from "./employees.js";
+import { adminReviewsRoutes } from "./reviews.js";
 
 export const adminRoutes = new Router({ prefix: "/admin" });
 
@@ -15,4 +16,6 @@ adminRoutes.use(async (ctx, next) => {
 
 adminRoutes
   .use(adminEmployeeRoutes.routes())
-  .use(adminEmployeeRoutes.allowedMethods());
+  .use(adminEmployeeRoutes.allowedMethods())
+  .use(adminReviewsRoutes.routes())
+  .use(adminReviewsRoutes.allowedMethods());
