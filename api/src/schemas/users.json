@@ -1,1 +1,37 @@
-{}
+{
+  "title": "User schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "_id": {
+      "bsonType": "objectId"
+    },
+    "email": {
+      "description": "normalized email address",
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 254,
+      "pattern": "^[\\w0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w0-9](?:[\\w0-9-]*[\\w0-9])?\\.)+[\\w0-9](?:[\\w0-9-]*[\\w0-9])?$"
+    },
+    "name": {
+      "description": "display name",
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "suspended", "deleted"]
+    },
+    "roles": {
+      "type": "array",
+      "additionalItems": false,
+      "items": {
+        "type": "string",
+        "enum": ["admin", "employee"]
+      }
+    },
+    "password_hash": {
+      "type": "string"
+    }
+  },
+  "required": ["email", "password_hash", "status"]
+}
