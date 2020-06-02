@@ -1,0 +1,24 @@
+{
+  "root": true,
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "@nuxtjs/eslint-config-typescript",
+    "prettier",
+    "prettier/vue",
+    "plugin:nuxt/recommended"
+  ],
+  "overrides": [
+    {
+      "files": ["*.test.ts", "test/**.ts"],
+      "env": {
+        "jest": true
+      },
+      "extends": ["plugin:jest/recommended"]
+    }
+  ]
+}
