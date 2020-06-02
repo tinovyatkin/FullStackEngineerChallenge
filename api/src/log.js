@@ -7,7 +7,7 @@ import Winston from "winston";
 const { createLogger, format, transports } = Winston;
 
 const logger = createLogger({
-  level: "info",
+  level: process.env.NODE_ENV === "test" ? "critical" : "debug",
   format: format.combine(
     format.errors({ stack: true }),
     format.colorize(),

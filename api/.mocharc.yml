@@ -1,5 +1,8 @@
 check-leaks: true
+v8-stack-trace-limit: 100
 color: true
 timeout: 15000
-require: dotenv/config
 exit: true
+require:
+  - dotenv/config
+  - .mocharc.env.cjs
