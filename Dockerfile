@@ -26,6 +26,7 @@ RUN markdown README.md > ./readme/index.html
 
 ENV HUSKY_SKIP_INSTALL true
 ENV NODE_ENV development
+ENV JWT_SECRET jwt_super_secret_1
 
 WORKDIR /app/frontend
 COPY frontend/package.json frontend/package-lock.json ./
