@@ -64,9 +64,9 @@ export default async (
     }
   }
 
-  // create index for user email and email/password
+  // create index for user email
   await db.collection("users").createIndex({ email: 1 }, { unique: true });
-  await db.collection("users").createIndex({ email: 1, password: 1 });
+  await db.collection("users").createIndex({ email: 1, roles: 1 });
 
   // save reference to global app context
   app.context.db = db;
