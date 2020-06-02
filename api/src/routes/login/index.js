@@ -11,7 +11,7 @@ loginRoutes.post(
    * @param {KoaContext} ctx
    * @param {Function} next
    */
-  async (ctx, next) => {
+  async (ctx) => {
     const { email, password } = ctx.request.body;
     ctx.assert(
       typeof email === "string" && email.length > 3,
@@ -28,7 +28,7 @@ loginRoutes.post(
       .collection("Users")
       .findOne(
         { email: normalizeEmail(email), status: "active" },
-        { projection: { password_hash: 1, email: 1, roles: 1 } }
+        { projection: { password_hash: 1, email: 1, roles: 1, _id: 0 } }
       );
     ctx.assert(user, 401, `User ${user} is unknown or inactive`);
     const match = await bcrypt.compare(password, user.password_hash);
@@ -42,7 +42,5 @@ loginRoutes.post(
 
     // save it to the cookie too
     ctx.cookies.set("jwt", token);
-
-    return next();
   }
 );

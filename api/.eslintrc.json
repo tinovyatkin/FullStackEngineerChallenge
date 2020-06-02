@@ -37,7 +37,10 @@
       "env": {
         "mocha": true
       },
-      "extends": ["plugin:mocha/recommended"]
+      "extends": ["plugin:mocha/recommended"],
+      "rules": {
+        "no-unused-vars": "warn"
+      }
     }
   ],
   "settings": {
