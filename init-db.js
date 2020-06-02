@@ -8,7 +8,7 @@ db.getCollection("Users").findOneAndUpdate(
     $set: {
       email: "admin@test.com",
       password_hash:
-        "$2b$10$9GzU/.fi1mGhv5jMsImIfu3kBILY4RnVrNP6GfJaMjq2/vUCz4yl6",
+        "$2b$10$ZxNLgRGg/5M6WWjRsx0uVOMcIeGERMKVpJT4RrKNDsHprOt2wK7kO",
       status: "active",
       roles: ["admin"],
     },
