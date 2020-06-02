@@ -1,3 +1,5 @@
 check-leaks: true
 color: true
 timeout: 15000
+require: dotenv/config
+exit: true
