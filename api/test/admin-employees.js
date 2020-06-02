@@ -96,7 +96,7 @@ describe("admin -> employees routes", function () {
       .expect(200);
   });
 
-  it("should delete user", async function () {
+  it("should delete an employee", async function () {
     await request(server)
       .delete(`/admin/employees/${knownUserEmail}`)
       .set("Authorization", `Bearer ${token}`)
