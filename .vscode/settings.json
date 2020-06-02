@@ -51,6 +51,14 @@
   "npm.packageManager": "npm",
   "npm.fetchOnlinePackageInfo": true,
   "npm.enableScriptExplorer": true,
+  "testExplorer.codeLens": true,
+  "mochaExplorer.autoload": true,
+  "mochaExplorer.envPath": "api/.env",
+  "mochaExplorer.files": "api/test/**/*.js",
+  "mochaExplorer.mochaPath": "api/node_modules/mocha",
+  "mochaExplorer.exit": true,
+  "mochaExplorer.cwd": "api",
+  "mochaExplorer.ui": "",
   "json.schemas": [
     {
       "fileMatch": ["schemas/*.json"],
