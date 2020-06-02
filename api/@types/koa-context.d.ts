@@ -8,4 +8,5 @@
 declare type KoaContext = {
   db: import("mongodb").Db;
   log: import("winston").Logger;
+  request: import("koa").Request & { body: any };
 } & import("koa-router").IRouterContext;
