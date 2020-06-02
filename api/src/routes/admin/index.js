@@ -4,7 +4,7 @@ import { adminEmployeeRoutes } from "./employees.js";
 export const adminRoutes = new Router({ prefix: "/admin" });
 
 // make sure user has an admin role
-adminRoutes.all("/", async (ctx, next) => {
+adminRoutes.use(async (ctx, next) => {
   ctx.assert(
     ctx.state.user?.roles?.includes("admin"),
     401,

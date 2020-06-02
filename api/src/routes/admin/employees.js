@@ -3,7 +3,7 @@ import normalizeEmail from "validator/lib/normalizeEmail.js";
 import isEmail from "validator/lib/isEmail.js";
 import bcrypt from "bcrypt";
 
-export const adminEmployeeRoutes = new Router({ prefix: "/employee" });
+export const adminEmployeeRoutes = new Router({ prefix: "/employees" });
 
 /**
  * Create new employee
@@ -21,14 +21,10 @@ adminEmployeeRoutes.post(
     // try to insert it into the database
     // it will throw if user already exists
     const user = await ctx.db.collection("Users").insertOne({
-      $set: {
-        email: normalizeEmail(email),
-        password_hash: await bcrypt.hash(password, 10),
-        status: "active",
-      },
-      $addToSet: {
-        roles: "employee",
-      },
+      email: normalizeEmail(email),
+      password_hash: await bcrypt.hash(password, 10),
+      status: "active",
+      roles: ["employee"],
     });
     ctx.status = 201; // created
     ctx.body = {
@@ -93,7 +89,11 @@ adminEmployeeRoutes.delete(
       { projection: { _id: 1 } }
     );
 
-    ctx.assert(user.ok === 1, 404, `Unknown or deleted user`);
+    ctx.assert(
+      user.lastErrorObject?.updatedExisting,
+      404,
+      `Unknown or deleted user`
+    );
     ctx.status = 202; // resource marked for deletion
     ctx.body = { id: user._id };
     return next();
