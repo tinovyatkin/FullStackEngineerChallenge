@@ -42,7 +42,6 @@ adminEmployeeRoutes.get(
   /**
    * @param {KoaContext} ctx
    * @param {Function} next
-   * @param netx
    */
   async (ctx, next) => {
     // getting all active users with employee role
