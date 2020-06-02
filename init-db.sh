@@ -5,6 +5,6 @@
 # Give mongo some time to initialize
 sleep 5
 
-/usr/bin/mongo paypay-challenge init-db.js || exit 1
+/usr/bin/mongo $(basename $MONGOHQ_URL) init-db.js || exit 1
 
 /usr/bin/mongod --dbpath /data/db --shutdown
