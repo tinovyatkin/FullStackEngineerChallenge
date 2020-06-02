@@ -1,0 +1,9 @@
+{
+  "verbose": true,
+  "restartable": "rs",
+  "execMap": {
+    "js": "node -r dotenv/config --experimental-top-level-await"
+  },
+  "watch": ["src/"],
+  "ext": "js,json,env"
+}
