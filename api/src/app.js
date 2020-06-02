@@ -1,12 +1,25 @@
 import Koa from "koa";
-import Router from "@koa/router";
 import cors from "@koa/cors";
+import bodyparser from "koa-bodyparser";
 
 import createLogger from "./log.js";
+import { router } from "./routes/index.js";
 
 export const app = /** @type {Koa & { context: KoaContext }} */ (new Koa());
-const router = new Router();
 
 createLogger(app);
 
-app.use(cors()).use(router.routes()).use(router.allowedMethods());
+app.on("error", (err) => {
+  app.context.log.error(err);
+});
+app
+  .use(cors())
+  .use(
+    bodyparser({
+      onerror(err) {
+        app.context.log.error(err);
+      },
+    })
+  )
+  .use(router.routes())
+  .use(router.allowedMethods());
