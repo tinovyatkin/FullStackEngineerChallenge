@@ -13,7 +13,7 @@ RUN apt-get autoremove && apt-get autoclean && apt-get clean && rm -rf /var/lib/
 
 RUN mkdir /var/run/sshd
 
-RUN npm install -g nodemon
+RUN npm install -g nodemon @nuxt/core @nuxt/cli @nuxt/typescript-build @nuxt/typescript-runtime
 
 WORKDIR /app
 RUN mkdir -p /data/db ./readme
