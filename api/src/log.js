@@ -17,6 +17,13 @@ const logger = createLogger({
   transports: [new transports.Console()],
 });
 
+process.on("uncaughtException", (err) => {
+  logger.error(err);
+});
+process.on("unhandledRejection", (err) => {
+  logger.error(err);
+});
+
 /**
  * @param {import('koa')} app
  */
