@@ -1,9 +1,9 @@
 <template>
-  <img class="VuetifyLogo" alt="Vuetify Logo" src="/vuetify-logo.svg" />
+  <img class="PayPayLogo" alt="PayPay Logo" src="/logo_paypay.svg" />
 </template>
 
 <style>
-.VuetifyLogo {
+.PayPayLogo {
   height: 180px;
   width: 180px;
   transform: rotateY(560deg);

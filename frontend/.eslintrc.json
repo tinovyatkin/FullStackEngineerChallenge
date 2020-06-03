@@ -12,6 +12,9 @@
     "prettier/vue",
     "plugin:nuxt/recommended"
   ],
+  "rules": {
+    "require-await": "off"
+  },
   "overrides": [
     {
       "files": ["*.test.ts", "test/**.ts"],
