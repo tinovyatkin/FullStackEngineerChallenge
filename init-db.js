@@ -1,6 +1,7 @@
 // @ts-nocheck
 // insert default admin@test.com user with admin password
-db.getCollection("Users").findOneAndUpdate(
+var coll = db.getCollection("Users");
+coll.findOneAndUpdate(
   {
     email: "admin@test.com",
   },
