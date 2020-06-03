@@ -5,6 +5,11 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": true
   },
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": true
+  },
   // switch off default VSCode formatting rules
   "javascript.format.enable": false,
   "yaml.format.enable": true,
