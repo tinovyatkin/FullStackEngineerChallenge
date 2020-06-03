@@ -22,7 +22,7 @@ ENV MONGOHQ_URL=mongodb://localhost/paypay-challenge
 
 WORKDIR /app
 RUN mkdir -p /data/db ./readme
-COPY init-db.sh init-db.js ./
+COPY init-db.sh init-db.js mock-users.txt ./
 RUN ./init-db.sh
 
 COPY . ./
