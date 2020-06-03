@@ -51,6 +51,8 @@ describe("login unprotected routes", function () {
       .expect("Content-Type", /json/)
       .expect((res) => {
         expect(res.body).to.be.string;
+        expect(res.headers["set-cookie"]).to.be.instanceOf(Array);
+        expect(res.headers["set-cookie"][0]).to.include("auth=");
       })
       .expect(200);
   });
