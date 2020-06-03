@@ -26,7 +26,7 @@ All GET endpoints providing pagination, limiting and sorting parameters.
 
 ## Frontend
 
-This is Vue.js application via Nuxt.js framework, utilizing Vuex as store, Vue-router for navigation and Vuetify (Material Design) for UI and reusable components.
+This is Vue.js application via Nuxt.js framework, utilizing Vuex as store, Vue-router for navigation and Vuetify (Material Design) for UI and reusable components. Written in TypeScript.
 Implemented authorization logic, admin dashboard for viewing and removing employees with server-side data pagination and sorting supported.
 Implemented employee logic to see assigned reviews.
 Base foundation for unit tests via Jest and project localization.
