@@ -5,26 +5,23 @@
         <pay-pay-logo />
       </div>
       <v-card>
-        <v-card-title class="headline"
-          >Performance Reviews Requiring Your Feedback</v-card-title
-        >
+        <v-card-title class="headline">Manage Employees</v-card-title>
         <v-data-table
           :loading="loading"
           loading-text="Loading... Please wait"
-          :items="reviews"
-          :server-items-length="totalReviews"
+          :items="employees"
+          :server-items-length="totalEmployees"
           :headers="headers"
           :options.sync="options"
           class="elevation-1"
         >
-          <template v-slot:item.created_at="{ item }">
-            {{
-              new Date(item.created_at).toLocaleDateString("en", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })
-            }}
+          <template v-slot:item.actions="{ item }">
+            <!-- <v-icon small class="mr-2" @click="editItem(item)">
+              mdi-pencil
+            </v-icon> -->
+            <v-icon small @click="deleteItem(item)">
+              mdi-delete
+            </v-icon>
           </template>
         </v-data-table>
       </v-card>
@@ -42,19 +39,20 @@
     },
     data() {
       return {
-        totalReviews: 0,
+        totalEmployees: 0,
         loading: true,
-        reviews: [],
+        employees: [],
         options: {
-          sortBy: ["created_at"],
+          sortBy: ["name"],
         },
         headers: [
           {
-            text: "Created At",
+            text: "Name",
             align: "start",
-            value: "created_at",
+            value: "name",
           },
-          { text: "E-mail", value: "employee" },
+          { text: "E-mail", value: "email" },
+          { text: "Actions", value: "actions", sortable: false },
         ],
       };
     },
@@ -62,16 +60,16 @@
       options: {
         async handler() {
           const data = await this.getDataFromApi();
-          this.reviews = data.reviews;
-          this.totalReviews = data.total;
+          this.employees = data.employees;
+          this.totalEmployees = data.total;
         },
         deep: true,
       },
     },
     async mounted() {
       const data = await this.getDataFromApi();
-      this.reviews = data.reviews;
-      this.totalReviews = data.total;
+      this.employees = data.employees;
+      this.totalEmployees = data.total;
     },
     methods: {
       async getDataFromApi() {
@@ -87,7 +85,7 @@
             sortDesc[0]
           );
           const res = await fetch(
-            `/rest.api/employee/feedback?sortBy=${
+            `/rest.api/admin/employees?sortBy=${
               sortBy[0] || "name"
             }&page=${page}&itemsPerPage=${itemsPerPage}&sortDesc=${
               sortDesc[0] === false ? 1 : -1
@@ -104,6 +102,22 @@
           console.error(err);
         } finally {
           this.loading = false;
+        }
+      },
+
+      async deleteItem(item) {
+        if (!confirm("Are you sure you want to delete this item?")) return;
+        try {
+          const res = await fetch(`/rest.api/admin/employees/${item.email}`, {
+            method: "DELETE",
+            credentials: "include",
+          });
+          if (!res.ok) throw new Error(res.statusText);
+          const data = await this.getDataFromApi();
+          this.employees = data.employees;
+          this.totalEmployees = data.total;
+        } catch (err) {
+          console.error(err);
         }
       },
     },

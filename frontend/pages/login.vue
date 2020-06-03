@@ -9,7 +9,10 @@
           <v-card-title class="headline">Please login:</v-card-title>
           <v-card-text>
             <p>
-              <i>Use admin@test.com / admin for test admin account</i>
+              Use <b>admin@test.com</b> / <b>admin</b> for test admin account or
+              <br />
+              <b>employee@test.com</b> / <b>employee1</b> for an employee
+              account
             </p>
 
             <v-text-field
@@ -76,7 +79,6 @@
     },
     methods: {
       async onSubmit() {
-        console.info("Submit!", this.email, this.password);
         try {
           this.error = false;
           this.loading = true;
@@ -93,7 +95,6 @@
           await new Promise((resolve) => setTimeout(resolve, 700));
           if (!res.ok) throw new Error(res.statusText);
           const credentials = await res.json();
-          console.log(credentials);
           this.$store.commit("setAuth", credentials.token); // mutating to store for client rendering
           Cookie.set("auth", credentials.token); // saving token in cookie for server rendering
           this.$store.commit("setRoles", credentials.roles);

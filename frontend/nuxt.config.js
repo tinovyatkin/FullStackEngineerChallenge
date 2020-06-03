@@ -46,6 +46,13 @@ export default {
   modules: [
     // Doc: https://github.com/nuxt-community/dotenv-module
     "@nuxtjs/dotenv",
+    [
+      "nuxt-i18n",
+      {
+        locales: ["en", "jp", "ru"],
+        defaultLocale: "en",
+      },
+    ],
   ],
   /*
    ** vuetify module configuration
