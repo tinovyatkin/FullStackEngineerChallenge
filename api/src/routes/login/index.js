@@ -38,6 +38,7 @@ loginRoutes.post(
     ctx.status = 200;
     ctx.body = {
       token,
+      roles: user.roles,
     };
 
     // save it to the cookie too
