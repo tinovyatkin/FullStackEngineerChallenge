@@ -45,19 +45,32 @@ adminEmployeeRoutes.get(
    */
   async (ctx, next) => {
     // getting all active users with employee role
-    const { paginate = 20, page = 0 } = ctx.query;
-    const users = await ctx.db.collection("Users").find(
-      { roles: "employee", status: "active" },
-      {
-        limit: paginate,
-        skip: page * paginate,
-        sort: { email: 1 },
-        projection: { email: 1, name: 1 },
-      }
-    );
+    const {
+      itemsPerPage = 20,
+      page = 1,
+      sortBy = "email",
+      sortDesc = "1",
+    } = ctx.query;
+
+    // getting total number of employees
+    const total = await ctx.db
+      .collection("Users")
+      .countDocuments({ roles: "employee", status: "active" });
+
+    const users = await ctx.db
+      .collection("Users")
+      .find(
+        { roles: "employee", status: "active" },
+        {
+          projection: { email: 1, name: 1 },
+        }
+      )
+      .sort({ [sortBy]: parseInt(sortDesc, 10) })
+      .skip((parseInt(page, 10) - 1) * parseInt(itemsPerPage, 10))
+      .limit(Math.max(0, parseInt(itemsPerPage, 10)));
 
     ctx.status = 200;
-    ctx.body = await users.toArray();
+    ctx.body = { total, employees: await users.toArray() };
     return next();
   }
 );

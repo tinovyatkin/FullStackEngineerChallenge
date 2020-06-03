@@ -1,3 +1,3 @@
 import bcrypt from "bcrypt";
 
-console.log(bcrypt.hashSync("admin", 10));
+console.log(bcrypt.hashSync("employee1", 10));

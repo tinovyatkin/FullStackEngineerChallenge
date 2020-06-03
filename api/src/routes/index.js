@@ -3,6 +3,7 @@ import jwt from "koa-jwt";
 
 import { loginRoutes } from "./login/index.js";
 import { adminRoutes } from "./admin/index.js";
+import { employeeRoutes } from "./employee/index.js";
 export const router = new Router();
 
 // registering unprotected login route
@@ -12,3 +13,4 @@ router.use(loginRoutes.routes()).use(loginRoutes.allowedMethods());
 router.use(jwt({ secret: process.env.JWT_SECRET, cookie: "auth" }));
 
 router.use(adminRoutes.routes()).use(adminRoutes.allowedMethods());
+router.use(employeeRoutes.routes()).use(employeeRoutes.allowedMethods());

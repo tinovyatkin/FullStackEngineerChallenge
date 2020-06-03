@@ -88,9 +88,10 @@ describe("admin -> employees routes", function () {
       .get("/admin/employees")
       .set("Authorization", `Bearer ${token}`)
       .expect((res) => {
-        expect(res.body).to.be.instanceOf(Array);
-        expect(res.body.length).to.be.greaterThan(0);
-        const user = res.body.find((u) => u.email === knownUserEmail);
+        expect(res.body.total).to.be.greaterThan(0);
+        expect(res.body.employees).to.be.instanceOf(Array);
+        expect(res.body.employees.length).to.be.greaterThan(0);
+        const user = res.body.employees.find((u) => u.email === knownUserEmail);
         expect(user).not.to.be.null;
       })
       .expect(200);
