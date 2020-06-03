@@ -19,6 +19,8 @@ run:
 		-v $(CURDIR)/frontend/pages:/app/frontend/pages \
 		-v $(CURDIR)/frontend/layouts:/app/frontend/layouts \
 		-v $(CURDIR)/frontend/components:/app/frontend/components \
+		-v $(CURDIR)/frontend/store:/app/frontend/store \
+		-v $(CURDIR)/frontend/middleware:/app/frontend/middleware \
 		-v $(CURDIR)/frontend/static:/app/frontend/static \
 		-v $(CURDIR)/frontend/test:/app/frontend/test \
 		paypay-recruit
