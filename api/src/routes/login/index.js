@@ -41,6 +41,6 @@ loginRoutes.post(
     };
 
     // save it to the cookie too
-    ctx.cookies.set("jwt", token);
+    ctx.cookies.set("auth", token);
   }
 );

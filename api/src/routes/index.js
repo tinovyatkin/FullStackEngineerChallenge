@@ -6,9 +6,9 @@ import { adminRoutes } from "./admin/index.js";
 export const router = new Router();
 
 // registering unprotected login route
-router.use(loginRoutes.routes()); //.use(loginRoutes.allowedMethods());
+router.use(loginRoutes.routes()).use(loginRoutes.allowedMethods());
 
 // protect following routes
-router.use(jwt({ secret: process.env.JWT_SECRET, cookie: "jwt" }));
+router.use(jwt({ secret: process.env.JWT_SECRET, cookie: "auth" }));
 
 router.use(adminRoutes.routes()).use(adminRoutes.allowedMethods());
