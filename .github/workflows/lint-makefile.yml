@@ -3,29 +3,13 @@ name: CI
 on:
   pull_request:
     paths:
-      - "**.js"
-      - "**.ts"
-      - "**eslint**"
-      - "package.json"
-      - Dockerfile
       - Makefile
-      - ".github/workflows/lint.yml"
+      - ".github/workflows/lint-makefile.yml"
 jobs:
-  lint:
+  lint-makefile:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js
-        uses: actions/setup-node@v2-beta
-        with:
-          node-version: 14
-
-      # lint Dockerfile
-      - uses: burdzwastaken/hadolint-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # lint Makefile
       # Get and build checkmake
       - uses: actions/checkout@v2
         with:
@@ -44,15 +28,3 @@ jobs:
         working-directory: ./checkmake
 
       - run: ./checkmake/checkmake Makefile
-
-      # lint api
-      - run: |
-          npm ci
-          npm run lint
-        working-directory: ./api
-
-      # lint frontend
-      - run: |
-          npm ci
-          npm run lint
-        working-directory: ./frontend
