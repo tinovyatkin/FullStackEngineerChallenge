@@ -1,4 +1,4 @@
-name: CI
+name: Test
 
 on:
   pull_request:
@@ -8,7 +8,7 @@ on:
       - "api/package-lock.json"
       - ".github/workflows/test-api.yml"
 jobs:
-  test-api:
+  api:
     runs-on: ubuntu-latest
     services:
       mongod:
@@ -17,6 +17,7 @@ jobs:
           - 27017:27017
     env:
       JWT_SECRET: jwt_super_secret_1
+      MONGOHQ_URL: mongodb://localhost/paypay-challenge-test
 
     steps:
       - uses: actions/checkout@v2
@@ -25,9 +26,13 @@ jobs:
         with:
           node-version: ">=14.4"
 
-      - run: |
-          npm ci
-          npm test
+      - name: Init database
+        run: mongo $(basename $MONGOHQ_URL) init-db.js
+
+      - run: npm ci
+        working-directory: ./api
+
+      - run: npm test
         working-directory: ./api
 
       - name: Upload coverage to Codecov
