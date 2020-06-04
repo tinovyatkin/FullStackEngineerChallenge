@@ -2,5 +2,5 @@
   "include": ["src/**"],
   "checkCoverage": true,
   "clean": true,
-  "reporter": ["lcov", "text", "text-summary"]
+  "reporter": ["json", "text", "text-summary"]
 }
