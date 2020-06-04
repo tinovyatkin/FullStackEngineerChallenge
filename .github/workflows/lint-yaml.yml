@@ -10,9 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
 
       - name: Install yamllint
-        run: pip install --user yamllint
+        run: pip install yamllint
 
       - run: |
           LIST=`git --no-pager diff-tree --name-only --diff-filter=d --no-commit-id -r origin/master.. | awk '/\.ya?ml$/' | paste -sd " "`
