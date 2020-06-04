@@ -39,7 +39,9 @@ Implemented authorization logic, admin dashboard for viewing and removing employ
 Implemented employee logic to see assigned reviews.
 Base foundation for unit tests via Jest and project localization.
 
-## Docker environment
+## DevOps
+
+### Docker environment
 
 There is a simply way to see the project live via pre-configured Docker container,
 just run:
@@ -52,6 +54,6 @@ To cleanup:
 
 `make clean`
 
-## CI
+### CI
 
 The project have continuous integration setup via GitHub Actions, you may see [test run here](https://github.com/tinovyatkin/FullStackEngineerChallenge/pull/1).
