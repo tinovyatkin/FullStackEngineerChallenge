@@ -5,11 +5,6 @@ module.exports = {
     "^vue$": "vue/dist/vue.common.js",
   },
   preset: "@vue/cli-plugin-unit-jest/presets/typescript",
-  globals: {
-    "ts-jest": {
-      diagnostics: false,
-    },
-  },
   collectCoverage: false,
   collectCoverageFrom: [
     "<rootDir>/components/**/*.vue",
