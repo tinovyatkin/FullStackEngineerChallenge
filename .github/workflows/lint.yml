@@ -27,7 +27,7 @@ jobs:
       # lint Makefile
       - uses: docker://cytopia/checkmake
         with:
-          args: --rm -v $(pwd):/data
+          args: Makefile
 
       # lint api
       - run: |
