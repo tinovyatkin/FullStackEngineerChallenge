@@ -8,6 +8,7 @@ on:
       - "**eslint**"
       - "package.json"
       - Dockerfile
+      - Makefile
       - ".github/workflows/lint.yml"
 jobs:
   lint:
@@ -30,21 +31,19 @@ jobs:
         with:
           repository: mrtazz/checkmake
           path: checkmake
-          # ref: 0.1.0
       - uses: actions/setup-go@v2
         with:
           go-version: 1.13
-        id:
-          go
-          # sudo apt-get install -qq -y --no-install-recommends --no-install-suggests gox pandoc
-      - run: |
-          sudo wget https://github.com/jgm/pandoc/releases/download/2.7.3/pandoc-2.7.3-1-amd64.deb
-          sudo dpkg -i pandoc-2.7.3-1-amd64.deb
+      - name: Build checkmake
+        run: |
+          sudo wget https://github.com/jgm/pandoc/releases/download/2.9.2.1/pandoc-2.9.2.1-1-amd64.deb
+          sudo dpkg -i pandoc-2.9.2.1-1-amd64.deb
           make
           chmod +x checkmake
           ./checkmake --version
-          ./checkmake ../Makefile
         working-directory: ./checkmake
+
+      - run: ./checkmake/checkmake Makefile
 
       # lint api
       - run: |
