@@ -22,7 +22,7 @@ run:
 		-v $(CURDIR)/frontend/store:/app/frontend/store \
 		-v $(CURDIR)/frontend/middleware:/app/frontend/middleware \
 		-v $(CURDIR)/frontend/static:/app/frontend/static \
-		-v $(CURDIR)/frontend/test:/app/frontend/test \
+		-v $(CURDIR)/frontend/tests:/app/frontend/tests \
 		paypay-recruit
 	@echo All done! Open http://localhost:9999/readme/ for instructions
 
