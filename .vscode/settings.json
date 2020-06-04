@@ -80,5 +80,8 @@
       "url": "http://json.schemastore.org/prettierrc"
     }
   ],
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "cSpell.words": [
+    "Nuxt"
+  ]
 }
