@@ -1,0 +1,15 @@
+# https://yamllint.readthedocs.io/en/stable/configuration.html
+extends: default
+
+ignore: |
+  node_modules/
+
+rules:
+  # 80 chars should be enough, but don't fail if a line is longer
+  line-length:
+    max: 110
+    level: warning
+
+  document-start: disable
+  comments: disable
+  truthy: disable

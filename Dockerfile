@@ -4,15 +4,16 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ENV DEBIAN_FRONTEND=noninteractive
 # install never mongo version
 # https://docs.mongodb.com/manual/tutorial/install-mongodb-on-debian/
-RUN apt-get install -yq wget gnupg
+# hadolint ignore=DL3008
+RUN apt-get install -yq --no-install-recommends wget gnupg
 RUN wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | apt-key add -
 RUN echo "deb http://repo.mongodb.org/apt/debian stretch/mongodb-org/4.2 main" | tee /etc/apt/sources.list.d/mongodb-org-4.2.list
-RUN apt-get update
-RUN apt-get install -yq --no-install-recommends mongodb-org nginx supervisor openssh-server markdown
-RUN apt-get autoremove && apt-get autoclean && apt-get clean && rm -rf /var/lib/apt/lists/*
+# hadolint ignore=DL3008
+RUN apt-get update && apt-get install -yq --no-install-recommends mongodb-org nginx supervisor openssh-server markdown && apt-get autoremove && apt-get autoclean && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir /var/run/sshd
 
+# hadolint ignore=DL3016
 RUN npm install -g nodemon @nuxt/core @nuxt/cli @nuxt/typescript-build @nuxt/typescript-runtime
 
 ENV HUSKY_SKIP_INSTALL true

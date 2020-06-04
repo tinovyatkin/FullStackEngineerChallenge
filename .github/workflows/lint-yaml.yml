@@ -1,0 +1,23 @@
+name: Lint
+
+on:
+  pull_request:
+    paths:
+      - "**.yml"
+      - ".github/workflows/lint-yaml.yml"
+jobs:
+  yaml:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v2
+
+      - name: Install yamllint
+        run: pip install yamllint
+
+      - run: |
+          LIST=`git --no-pager diff-tree --name-only --diff-filter=d --no-commit-id -r origin/master.. | awk '/\.ya?ml$/' | paste -sd " "`
+          echo $LIST;
+          if [[ -z $(sed -e 's/[[:space:]]*$//' <<<${LIST}) ]] || [[ "$LIST" == "." ]]; then yamllint .github/**/*.yml; else yamllint $LIST; fi

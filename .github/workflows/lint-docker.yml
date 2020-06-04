@@ -1,0 +1,17 @@
+name: Lint
+
+on:
+  pull_request:
+    paths:
+      - Dockerfile
+      - ".github/workflows/lint-docker.yml"
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      # lint Dockerfile
+      - uses: burdzwastaken/hadolint-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

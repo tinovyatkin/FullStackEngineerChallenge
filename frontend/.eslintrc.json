@@ -17,11 +17,14 @@
   },
   "overrides": [
     {
-      "files": ["*.test.ts", "tests/**.ts"],
+      "files": ["*.test.ts", "tests/**/**.ts"],
       "env": {
         "jest": true
       },
-      "extends": ["plugin:jest/recommended"]
+      "extends": ["plugin:jest/recommended"],
+      "rules": {
+        "@typescript-eslint/no-unused-vars": "warn"
+      }
     }
   ]
 }

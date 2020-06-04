@@ -1,0 +1,12 @@
+codecov:
+  require_ci_to_pass: yes
+
+ignore:
+  - "**/test/**" # ignore folders and all its contents
+
+coverage:
+  round: up
+  precision: 2
+  parsers:
+    javascript:
+      enable_partials: yes

@@ -1,6 +1,10 @@
 {
   "include": ["src/**"],
-  "checkCoverage": true,
+  "check-coverage": true,
+  "branches": 75,
+  "lines": 80,
+  "functions": 65,
+  "statements": 80,
   "clean": true,
-  "reporter": ["lcov", "text", "text-summary"]
+  "reporter": ["json", "text", "text-summary"]
 }

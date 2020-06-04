@@ -5,7 +5,8 @@ module.exports = {
     "^vue$": "vue/dist/vue.common.js",
   },
   preset: "@vue/cli-plugin-unit-jest/presets/typescript",
-  collectCoverage: false,
+  coverageReporters: ["json", "text", "text-summary"],
+
   collectCoverageFrom: [
     "<rootDir>/components/**/*.vue",
     "<rootDir>/pages/**/*.vue",
