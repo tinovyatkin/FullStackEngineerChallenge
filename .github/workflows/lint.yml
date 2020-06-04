@@ -32,7 +32,7 @@ jobs:
           path: checkmake
 
       - run: |
-          apt-get install -qq -y --no-install-recommends --no-install-suggests gox pandoc
+          sudo apt-get install -qq -y --no-install-recommends --no-install-suggests gox pandoc
           make
           chmod +x checkmake
           ./checkmake --version
