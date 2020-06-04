@@ -24,13 +24,18 @@ loginRoutes.post(
       `Password is required`
     );
     // getting user from db
-    const user = await ctx.db
-      .collection("Users")
-      .findOne(
-        { email: normalizeEmail(email), status: "active" },
-        { projection: { password_hash: 1, email: 1, roles: 1, _id: 0 } }
-      );
-    ctx.assert(user, 401, `User ${user} is unknown or inactive`);
+    const user = await ctx.db.collection("Users").findOne(
+      { email: normalizeEmail(email), status: "active" },
+      {
+        projection: {
+          password_hash: 1,
+          email: 1,
+          roles: 1,
+          _id: 0,
+        },
+      }
+    );
+    ctx.assert(user, 401, `User ${email} is unknown or inactive`);
     const match = await bcrypt.compare(password, user.password_hash);
     ctx.assert(match, 401, `Invalid password or username`);
 
