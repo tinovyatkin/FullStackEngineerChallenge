@@ -1,4 +1,4 @@
-# Full Stack Developer Challenge
+# Full Stack Developer Challenge ![CI](https://github.com/tinovyatkin/FullStackEngineerChallenge/workflows/CI/badge.svg?branch=master)
 
 ## Intro
 
@@ -51,3 +51,7 @@ it will build the container with MongoDB and some mock data as well as mapped fo
 To cleanup:
 
 `make clean`
+
+## CI
+
+The project have continuous integration setup via GitHub Actions, you may see [test run here](https://github.com/tinovyatkin/FullStackEngineerChallenge/pull/1).
