@@ -1,4 +1,4 @@
-# Full Stack Developer Challenge ![CI](https://github.com/tinovyatkin/FullStackEngineerChallenge/workflows/CI/badge.svg?branch=master)
+# Full Stack Developer Challenge ![CI](https://github.com/tinovyatkin/FullStackEngineerChallenge/workflows/CI/badge.svg?branch=master) [![codecov](https://codecov.io/gh/tinovyatkin/FullStackEngineerChallenge/branch/master/graph/badge.svg)](https://codecov.io/gh/tinovyatkin/FullStackEngineerChallenge)
 
 ## Intro
 
