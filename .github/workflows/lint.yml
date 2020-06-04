@@ -35,10 +35,8 @@ jobs:
         with:
           go-version: 1.13
         id: go
-      # https://github.com/mrtazz/checkmake/blob/1383019b4b84bf8af0a50f8d186f067d64720c12/.github/workflows/ci.yml#L21
       - run: |
-          sudo wget https://github.com/jgm/pandoc/releases/download/2.7.3/pandoc-2.7.3-1-amd64.deb
-          sudo dpkg -i pandoc-2.7.3-1-amd64.deb
+          sudo apt-get install -qq -y --no-install-recommends --no-install-suggests gox pandoc
           make
           chmod +x checkmake
           ./checkmake --version
