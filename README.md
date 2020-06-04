@@ -7,7 +7,7 @@ This is my code implementation as a solution to this dev challenge. The App is s
 ## The API
 
 API server implemented on lightweight Koa.JS framework with MongoDB as database layer. Pure JavaScript with JSDoc typings, targeting Node 14.
-Functional tests implemented via Mocha framework, with native V8 code coverage reported by `c8`: run `npm test` in the `api` folder.
+Functional tests implemented via Mocha framework, with native V8 code coverage reported by `c8`.
 MongoDB data consistency is enforced by natively supported [JSON schemas](api/src/schemas/)
 
 Authorization is JWT based.
@@ -23,6 +23,14 @@ All GET endpoints providing pagination, limiting and sorting parameters.
     - [x] POST /admin/employees - create an employee
     - [x] DELETE /admin/employees/:employee_email - delete an employee
     - [x] PUT /admin/reviews/:employee_email - assign an employee for another employee performance review
+
+Run tests:
+
+```sh
+cd api
+npm install
+npm test
+```
 
 ## Frontend
 
