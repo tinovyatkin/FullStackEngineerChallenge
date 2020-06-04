@@ -48,7 +48,7 @@ just run:
 
 `make`
 
-it will build the container with MongoDB and some mock data as well as mapped folders with full hot-reload support. Then open `http://localhost:9999` in a browser.
+it will build the container with MongoDB and some mock data and test user accounts as well as mapped folders with full hot-reload support. Then open [http://localhost:9999](http://localhost:9999) in a browser once docker build finished.
 
 To cleanup:
 
@@ -56,4 +56,6 @@ To cleanup:
 
 ### CI
 
-The project have continuous integration setup via GitHub Actions, you may see [test run here](https://github.com/tinovyatkin/FullStackEngineerChallenge/pull/1).
+The project have continuous integration setup via [GitHub Actions](.github/workflows/), that lints files changed in current Pull Request (current setup includes linting for JavaScript, TypesScript, Makefile, Yaml and Dockerfile) and runs appropriate test suites with coverage reporting.
+
+You may see [test run here](https://github.com/tinovyatkin/FullStackEngineerChallenge/pull/1) or [here](https://github.com/tinovyatkin/FullStackEngineerChallenge/pull/2).
