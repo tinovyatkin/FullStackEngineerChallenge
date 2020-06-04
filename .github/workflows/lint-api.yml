@@ -1,4 +1,4 @@
-name: CI
+name: Lint
 
 on:
   pull_request:
@@ -8,7 +8,7 @@ on:
       - "api/package-lock.json"
       - ".github/workflows/lint-api.yml"
 jobs:
-  lint-api:
+  api:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

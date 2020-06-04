@@ -1,4 +1,4 @@
-name: CI
+name: Lint
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
       - Makefile
       - ".github/workflows/lint-makefile.yml"
 jobs:
-  lint-makefile:
+  makefile:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
