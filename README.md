@@ -56,6 +56,6 @@ To cleanup:
 
 ### CI
 
-The project have continuous integration setup via GitHub Actions, that lints files changed in current Pull Request (current setup includes linting for JavaScript, TypesScript, Makefile, Yaml and Dockerfile) and runs appropriate test suites with coverage reporting.
+The project have continuous integration setup via [GitHub Actions](.github/workflows/), that lints files changed in current Pull Request (current setup includes linting for JavaScript, TypesScript, Makefile, Yaml and Dockerfile) and runs appropriate test suites with coverage reporting.
 
 You may see [test run here](https://github.com/tinovyatkin/FullStackEngineerChallenge/pull/1) or [here](https://github.com/tinovyatkin/FullStackEngineerChallenge/pull/2).
