@@ -11,7 +11,7 @@ describe("admin -> employees routes", function () {
   /** @type {import('http').Server} */
   let server;
   let token;
-  let knownUserEmail = "employee@test.com";
+  let knownUserEmail = "employee1@test.com";
   let knownUserPassword = "test12244";
 
   before(async function () {
