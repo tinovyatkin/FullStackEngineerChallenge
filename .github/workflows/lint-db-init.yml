@@ -1,0 +1,25 @@
+name: Lint
+
+on:
+  pull_request:
+    paths:
+      - "init-db.js"
+      - ".github/workflows/lint-db-init.yml"
+jobs:
+  init-db:
+    runs-on: ubuntu-latest
+    services:
+      mongod:
+        image: mongo:latest
+        ports:
+          - 27017:27017
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2-beta
+
+      - name: Lint init-db.js with ESLint
+        run: npx eslint --env es6,mongo --no-eslintrc --rule 'no-undef:2,no-irregular-whitespace:2,no-unused-vars:2' init-db.js
+
+      - name: Try to init database
+        run: mongo test init-db.js
