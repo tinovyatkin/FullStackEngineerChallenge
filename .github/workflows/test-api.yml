@@ -10,6 +10,14 @@ on:
 jobs:
   test-api:
     runs-on: ubuntu-latest
+    services:
+      mongod:
+        image: mongo:latest
+        ports:
+          - 27017:27017
+    env:
+      JWT_SECRET: jwt_super_secret_1
+
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js
