@@ -26,14 +26,14 @@ describe("server routes tests", () => {
   });
 
   // Example of testing only generated html
-  test("Route / exits and render HTML", async (t) => {
+  test("Route / exits and render HTML", async () => {
     const context = {};
     const { html } = await nuxt.server.renderRoute("/", context);
     expect(html).toContain('<h1 class="red">Hello world!</h1>');
   });
 
   // Example of testing via dom checking
-  test("Route / exits and render HTML with CSS applied", async (t) => {
+  test("Route / exits and render HTML with CSS applied", async () => {
     const context = {};
     const { html } = await nuxt.server.renderRoute("/", context);
     document.write(html);
