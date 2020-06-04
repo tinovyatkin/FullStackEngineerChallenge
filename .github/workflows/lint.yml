@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  pull_request:
+    paths:
+      - "**.js"
+      - "**.ts"
+      - "**eslint**"
+      - "package.json"
+      - Dockerfile
+      - ".github/workflows/lint.yml"
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: 14
+
+      # lint Dockerfile
+      - uses: burdzwastaken/hadolint-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # lint Makefile
+      - uses: docker://cytopia/checkmake Makefile
+        with:
+          args: --rm -v $(pwd):/data
+
+      # lint api
+      - run: |
+          npm ci
+          npm run lint
+        working-directory: ./api
+
+      # lint frontend
+      - run: |
+          npm ci
+          npm run lint
+        working-directory: ./frontend
