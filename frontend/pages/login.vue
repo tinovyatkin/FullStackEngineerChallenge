@@ -92,7 +92,7 @@
             credentials: "include",
           });
           // a little wait to show our nice progress and form fields disable
-          await new Promise((resolve) => setTimeout(resolve, 700));
+          await new Promise((resolve) => setTimeout(resolve, 500));
           if (!res.ok) throw new Error(res.statusText);
           const credentials = await res.json();
           this.$store.commit("setAuth", credentials.token); // mutating to store for client rendering

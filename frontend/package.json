@@ -12,6 +12,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@nuxt/http": "0.5.1",
     "@nuxt/typescript-runtime": "^0.4.8",
     "@nuxtjs/dotenv": "^1.4.1",
     "cookieparser": "0.1.0",

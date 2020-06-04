@@ -1,5 +1,3 @@
-const cookieparser = process.server ? require("cookieparser") : undefined;
-
 interface State {
   auth: string | null;
   roles: Set<string>;
@@ -27,10 +25,11 @@ export const mutations = {
 };
 
 export const actions = {
-  nuxtServerInit({ commit }, { req }) {
+  async nuxtServerInit({ commit }, { req }) {
     let auth = null;
     let roles = [];
     if (req.headers.cookie) {
+      const cookieparser = await import("cookieparser");
       const parsed = cookieparser.parse(req.headers.cookie);
       try {
         auth = JSON.parse(parsed.auth);

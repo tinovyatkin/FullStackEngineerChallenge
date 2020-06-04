@@ -46,6 +46,7 @@ export default {
   modules: [
     // Doc: https://github.com/nuxt-community/dotenv-module
     "@nuxtjs/dotenv",
+    "@nuxt/http",
     [
       "nuxt-i18n",
       {
