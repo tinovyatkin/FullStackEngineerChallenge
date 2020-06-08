@@ -4,7 +4,6 @@ on:
   pull_request:
     paths:
       - "api/**.js"
-      - "api/**eslint**"
       - "api/package-lock.json"
       - ".github/workflows/test-api.yml"
 jobs:
