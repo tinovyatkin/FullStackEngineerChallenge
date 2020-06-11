@@ -21,7 +21,7 @@
     "koa-jwt": "4.0.0",
     "koa-router": "9.0.1",
     "mongodb": "3.5.8",
-    "validator": "13.0.0",
+    "validator": "13.1.0",
     "winston": "3.2.1"
   },
   "devDependencies": {
