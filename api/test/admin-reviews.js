@@ -2,12 +2,9 @@ import { once } from "events";
 import { randomBytes } from "crypto";
 
 import request from "supertest";
-import chai from "chai";
 
 import connectMongoDb from "../src/mongodb.js";
 import { app } from "../src/app.js";
-
-const { expect } = chai;
 
 describe("admin -> reviews routes", function () {
   /** @type {import('http').Server} */

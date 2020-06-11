@@ -9,7 +9,6 @@ loginRoutes.post(
   "/",
   /**
    * @param {KoaContext} ctx
-   * @param {Function} next
    */
   async (ctx) => {
     const { email, password } = ctx.request.body;
